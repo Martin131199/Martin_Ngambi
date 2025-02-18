@@ -1,29 +1,36 @@
-document.getElementById('certificate-form').addEventListener('submit', function (e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+  const certificateContainer = document.getElementById('certificate-container');
 
-  // Get form values
-  const certificateName = document.getElementById('certificate-name').value;
-  const certificatePdf = document.getElementById('certificate-pdf').files[0];
+  // GitHub Repository Information
+  const username = "martinngambi"; // Your GitHub username
+  const repo = "portfolio_website"; // Your repository name
+  const path = "certificates"; // Folder where PDFs are stored
 
-  // Create a new certificate card
-  const certificateCard = document.createElement('div');
-  certificateCard.classList.add('certificate-card');
+  // GitHub API to list files in the repository
+  fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`)
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(file => {
+        if (file.name.endsWith('.pdf')) {
+          const certificateCard = document.createElement('div');
+          certificateCard.classList.add('certificate-card');
 
-  // Add certificate name
-  const nameElement = document.createElement('h3');
-  nameElement.textContent = certificateName;
-  certificateCard.appendChild(nameElement);
+          // Add certificate name
+          const nameElement = document.createElement('h3');
+          nameElement.textContent = file.name.replace('.pdf', '');
+          certificateCard.appendChild(nameElement);
 
-  // Add a link to view/download the PDF
-  const pdfLink = document.createElement('a');
-  pdfLink.textContent = 'View/Download PDF';
-  pdfLink.href = URL.createObjectURL(certificatePdf);
-  pdfLink.target = '_blank'; // Open in a new tab
-  certificateCard.appendChild(pdfLink);
+          // Add a link to view/download the PDF
+          const pdfLink = document.createElement('a');
+          pdfLink.textContent = 'View/Download PDF';
+          pdfLink.href = file.download_url;
+          pdfLink.target = '_blank';
+          certificateCard.appendChild(pdfLink);
 
-  // Add the card to the container
-  document.getElementById('certificate-container').appendChild(certificateCard);
-
-  // Reset the form
-  document.getElementById('certificate-form').reset();
+          // Add the card to the container
+          certificateContainer.appendChild(certificateCard);
+        }
+      });
+    })
+    .catch(error => console.error('Error fetching certificates:', error));
 });
