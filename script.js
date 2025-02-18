@@ -4,12 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // GitHub Repository Information
   const username = "martinngambi"; // Your GitHub username
   const repo = "portfolio_website"; // Your repository name
-  const path = ""; // Folder is directly in the root of the repository, so the path is an empty string
+  const path = ""; // Folder is directly in the root of the repository
 
   // GitHub API to list files in the repository
   fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`)
-    .then(response => response.json())
+    .then(response => {
+      // Log the raw response to check if the fetch request is successful
+      console.log("API Response:", response);
+      return response.json();
+    })
     .then(data => {
+      console.log("Data:", data); // Log the data received from GitHub API
+
       if (data.length === 0) {
         const noCertificatesMessage = document.createElement('p');
         noCertificatesMessage.textContent = 'No certificates found.';
