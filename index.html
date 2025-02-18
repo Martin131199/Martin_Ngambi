@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Certificate Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>My Certificates</h1>
+    <p>Welcome to my portfolio! Here are the certificates I've earned.</p>
+  </header>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div id="certificate-container">
+      <!-- Certificates will be added here dynamically -->
+    </div>
+  </section>
+
+  <section id="add-certificate">
+    <h2>Add a New Certificate</h2>
+    <form id="certificate-form">
+      <label for="certificate-name">Certificate Name:</label>
+      <input type="text" id="certificate-name" required>
+
+      <label for="certificate-pdf">Upload PDF:</label>
+      <input type="file" id="certificate-pdf" accept="application/pdf" required>
+
+      <button type="submit">Add Certificate</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
