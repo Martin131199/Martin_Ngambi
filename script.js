@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // GitHub Repository Information
   const username = "martinngambi"; // Your GitHub username
   const repo = "portfolio_website"; // Your repository name
-  const path = "certificates"; // Folder where PDFs are stored
+  const path = "portfolio_website"; // Folder where PDFs are stored
 
   // GitHub API to list files in the repository
   fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`)
