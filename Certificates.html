@@ -1,41 +1,32 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const certificateContainer = document.getElementById('certificate-container');
-    const pdfViewer = document.getElementById('pdf-viewer');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Certificates</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    // List of certificates (Make sure file names match EXACTLY in the repo)
-    const certificates = [
-        "ESG Risks and Opportunities.pdf",
-        "Corporate Sustainability_ Strategic Opportunity.pdf",
-        "Sustainability Consulting.pdf",
-        "Introduction to Physical Chemistry.pdf",
-        "Quantum Mechanics.pdf"
-    ];
+    <section id="certificates">
+        <h2>My Certifications</h2>
+        <div id="certificate-container"></div>
+    </section>
 
-    // Base URL from GitHub Pages (Ensure it's correct)
-    const baseURL = "https://martinngambi.github.io/portfolio_website/";
+    <section id="viewer">
+        <iframe id="pdf-viewer" width="80%" height="600px" style="border: 1px solid #ddd;"></iframe>
+    </section>
 
-    certificates.forEach(filename => {
-        const encodedFilename = encodeURIComponent(filename); // Encode spaces & special characters
-
-        const certificateCard = document.createElement('div');
-        certificateCard.classList.add('certificate-card');
-
-        const nameElement = document.createElement('h3');
-        nameElement.textContent = filename.replace('.pdf', '');
-        certificateCard.appendChild(nameElement);
-
-        // Button to open the PDF inside the browser
-        const viewButton = document.createElement('button');
-        viewButton.textContent = 'View PDF';
-        viewButton.addEventListener('click', function () {
-            const pdfURL = baseURL + encodedFilename;
-            pdfViewer.src = pdfURL; // Open in embedded viewer
-            console.log("Opening:", pdfURL); // Debugging
-        });
-
-        certificateCard.appendChild(viewButton);
-        certificateContainer.appendChild(certificateCard);
-    });
-
-    console.log("Certificates loaded:", certificates);
-});
+    <script src="script.js"></script>
+</body>
+</html>
