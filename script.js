@@ -1,49 +1,37 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const certificateContainer = document.getElementById('certificate-container');
-  const pdfViewer = document.getElementById('pdf-viewer');
+    const certificateContainer = document.getElementById('certificate-container');
+    const pdfViewer = document.getElementById('pdf-viewer');
 
-  // List of certificates
-  const certificates = [
-    {
-      name: "ESG Risks & Opportunities",
-      url: "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/ESG%20Risks%20%26%20Opportunities.pdf"
-    },
-    {
-      name: "Corporate Sustainability - Strategic Opportunity",
-      url: "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/Corporate%20Sustainability_%20%20Strategic%20Opportunity.pdf"
-    },
-    {
-      name: "Sustainability Consulting",
-      url: "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/Sustainability%20Consulting.pdf"
-    },
-    {
-      name: "Introduction to Physical Chemistry",
-      url: "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/Introduction%20to%20Physical%20Chemistry.pdf"
-    },
-    {
-      name: "Quantum Mechanics",
-      url: "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/Quantum%20Mechanics.pdf"
-    }
-  ];
+    // List of certificates (Replace with your actual filenames)
+    const certificates = [
+        "ESG%20Risks%20%26%20Opportunities.pdf",
+        "Corporate%20Sustainability_%20%20Strategic%20Opportunity.pdf",
+        "Sustainability%20Consulting.pdf",
+        "Introduction%20to%20Physical%20Chemistry.pdf",
+        "Quantum%20Mechanics.pdf"
+    ];
 
-  // Loop through the certificates and create clickable elements
-  certificates.forEach(cert => {
-    const certificateCard = document.createElement('div');
-    certificateCard.classList.add('certificate-card');
+    // GitHub raw content base URL
+    const rawBaseURL = "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/";
 
-    // Add certificate name
-    const nameElement = document.createElement('h3');
-    nameElement.textContent = cert.name;
-    certificateCard.appendChild(nameElement);
+    // Create certificate list dynamically
+    certificates.forEach(filename => {
+        const certificateCard = document.createElement('div');
+        certificateCard.classList.add('certificate-card');
 
-    // Add a button to view the PDF inside the website
-    const viewButton = document.createElement('button');
-    viewButton.textContent = 'View Certificate';
-    viewButton.onclick = function () {
-      pdfViewer.src = cert.url; // Load the PDF inside the iframe
-    };
+        // Display certificate name
+        const nameElement = document.createElement('h3');
+        nameElement.textContent = filename.replace(/%20/g, ' ').replace('.pdf', '');
+        certificateCard.appendChild(nameElement);
 
-    certificateCard.appendChild(viewButton);
-    certificateContainer.appendChild(certificateCard);
-  });
+        // Add "View PDF" button
+        const viewButton = document.createElement('button');
+        viewButton.textContent = 'View PDF';
+        viewButton.addEventListener('click', function () {
+            pdfViewer.src = rawBaseURL + filename; // Load PDF inside iframe
+        });
+
+        certificateCard.appendChild(viewButton);
+        certificateContainer.appendChild(certificateCard);
+    });
 });
