@@ -2,42 +2,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const certificateContainer = document.getElementById('certificate-container');
     const pdfViewer = document.getElementById('pdf-viewer');
 
-    // List of certificates
+    // List of certificates (Make sure file names match EXACTLY in the repo)
     const certificates = [
-        "ESG%20Risks%20and%20Opportunities.pdf",
-        "Corporate%20Sustainability_%20%20Strategic%20Opportunity.pdf",
-        "Sustainability%20Consulting.pdf",
-        "Introduction%20to%20Physical%20Chemistry.pdf",
-        "Quantum%20Mechanics.pdf"
+        "ESG Risks and Opportunities.pdf",
+        "Corporate Sustainability_ Strategic Opportunity.pdf",
+        "Sustainability Consulting.pdf",
+        "Introduction to Physical Chemistry.pdf",
+        "Quantum Mechanics.pdf"
     ];
 
-    // Base URL from GitHub Pages
+    // Base URL from GitHub Pages (Ensure it's correct)
     const baseURL = "https://martinngambi.github.io/portfolio_website/";
 
     certificates.forEach(filename => {
+        const encodedFilename = encodeURIComponent(filename); // Encode spaces & special characters
+
         const certificateCard = document.createElement('div');
         certificateCard.classList.add('certificate-card');
 
         const nameElement = document.createElement('h3');
-        nameElement.textContent = filename.replace(/%20/g, ' ').replace('.pdf', '');
+        nameElement.textContent = filename.replace('.pdf', '');
         certificateCard.appendChild(nameElement);
 
         // Button to open the PDF inside the browser
         const viewButton = document.createElement('button');
         viewButton.textContent = 'View PDF';
         viewButton.addEventListener('click', function () {
-            pdfViewer.src = baseURL + filename; // Open in embedded viewer
+            const pdfURL = baseURL + encodedFilename;
+            pdfViewer.src = pdfURL; // Open in embedded viewer
+            console.log("Opening:", pdfURL); // Debugging
         });
 
-        // Link to download the PDF
-        const downloadLink = document.createElement('a');
-        downloadLink.href = baseURL + filename;
-        downloadLink.textContent = "Download PDF";
-        downloadLink.setAttribute('target', '_blank');
-        downloadLink.setAttribute('download', filename);
-
         certificateCard.appendChild(viewButton);
-        certificateCard.appendChild(downloadLink);
         certificateContainer.appendChild(certificateCard);
     });
+
+    console.log("Certificates loaded:", certificates);
 });
