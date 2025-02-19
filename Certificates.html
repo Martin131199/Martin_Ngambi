@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates - Martin-Romaric</title>
+    <title>Certificates</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html">About Me</a>
-        <a href="projects.html">Projects</a>
-        <a href="certificates.html">Certificates</a>
-    </nav>
 
-    <header>My Certifications</header>
+    <header>
+        <h1>My Certificates</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certificates.html" class="active">Certificates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section id="certificates">
+        <h2>My Achievements</h2>
         <div id="certificate-container"></div>
     </section>
 
-    <footer>
-        &copy; 2025 Martin-Romaric Angono Ngambi | All Rights Reserved
-    </footer>
+    <!-- Modal for PDF Viewer -->
+    <div id="pdf-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <iframe id="pdf-viewer" width="100%" height="500px"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
 
