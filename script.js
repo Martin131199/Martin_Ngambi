@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const certificateContainer = document.getElementById('certificate-container');
     const pdfViewer = document.getElementById('pdf-viewer');
 
-    // List of certificates (Replace with your actual filenames)
+    // List of certificate filenames
     const certificates = [
         "ESG%20Risks%20%26%20Opportunities.pdf",
         "Corporate%20Sustainability_%20%20Strategic%20Opportunity.pdf",
@@ -11,10 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "Quantum%20Mechanics.pdf"
     ];
 
-    // GitHub raw content base URL
-    const rawBaseURL = "https://raw.githubusercontent.com/martinngambi/portfolio_website/main/";
+    // GitHub Pages Base URL (Replace with your actual GitHub Pages URL)
+    const baseURL = "https://martinngambi.github.io/portfolio_website/";
 
-    // Create certificate list dynamically
     certificates.forEach(filename => {
         const certificateCard = document.createElement('div');
         certificateCard.classList.add('certificate-card');
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const viewButton = document.createElement('button');
         viewButton.textContent = 'View PDF';
         viewButton.addEventListener('click', function () {
-            pdfViewer.src = rawBaseURL + filename; // Load PDF inside iframe
+            pdfViewer.src = baseURL + filename; // Correct URL for GitHub Pages
         });
 
         certificateCard.appendChild(viewButton);
