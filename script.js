@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // List of certificates
     const certificates = [
-        "ESG%20Risks%20%26%20Opportunities.pdf",
+        "ESG%20Risks%20and%20Opportunities.pdf",
         "Corporate%20Sustainability_%20%20Strategic%20Opportunity.pdf",
         "Sustainability%20Consulting.pdf",
         "Introduction%20to%20Physical%20Chemistry.pdf",
