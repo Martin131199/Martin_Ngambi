@@ -1,48 +1,76 @@
+/* General Styles */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
+  background: linear-gradient(to right, #f8f9fa, #e3f2fd);
   text-align: center;
 }
 
-header {
+/* Navbar */
+nav {
   background-color: #007bff;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.5em;
-}
-
-#certificates, #about, #projects, #contact {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#certificate-container, #projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.certificate-card, .project-card {
-  background-color: #ffffff;
-  border: 2px solid #007bff;
-  border-radius: 8px;
   padding: 15px;
-  width: 220px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sections */
+section {
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+}
+
+section:hover {
+  transform: scale(1.02);
+}
+
+/* Cards for Certificates & Projects */
+.certificate-card, .project-card {
+  background: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease-in-out;
 }
 
 .certificate-card:hover, .project-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
 }
 
 .certificate-card a, .project-card a {
@@ -57,11 +85,14 @@ header {
   color: #0056b3;
 }
 
+/* About & Contact Text */
 #about p, #contact p {
   font-size: 1.2em;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #333;
 }
 
+/* Contact Links */
 .contact-links {
   display: flex;
   justify-content: center;
@@ -73,6 +104,23 @@ header {
   text-decoration: none;
   font-weight: bold;
   color: #007bff;
+  font-size: 1.2em;
+  transition: 0.3s;
+}
+
+.contact-links a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: #007bff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 1em;
 }
 
 .contact-links a:hover {
