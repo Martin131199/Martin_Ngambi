@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const certificateContainer = document.getElementById('certificate-container');
-    const pdfViewer = document.getElementById('pdf-viewer');
+    const modal = document.getElementById('pdf-modal');
+    const modalContent = document.getElementById('pdf-viewer');
+    const closeModal = document.getElementById('close-modal');
 
     // List of certificates
     const certificates = [
@@ -18,19 +20,43 @@ document.addEventListener('DOMContentLoaded', function () {
         const certificateCard = document.createElement('div');
         certificateCard.classList.add('certificate-card');
 
+        const cleanTitle = decodeURIComponent(filename.replace('.pdf', ''));
+
         const nameElement = document.createElement('h3');
-        nameElement.textContent = filename.replace(/%20/g, ' ').replace('.pdf', '');
+        nameElement.textContent = cleanTitle;
         certificateCard.appendChild(nameElement);
 
-        // Button to open the PDF inside the browser
+        // Button to open the PDF in a modal
         const viewButton = document.createElement('button');
         viewButton.textContent = 'View PDF';
         viewButton.addEventListener('click', function () {
-            pdfViewer.src = baseURL + filename; // Open in embedded viewer
+            modalContent.src = baseURL + filename;
+            modal.style.display = 'block';
         });
 
+        // Button to download the PDF
+        const downloadButton = document.createElement('a');
+        downloadButton.textContent = 'Download';
+        downloadButton.href = baseURL + filename;
+        downloadButton.download = filename;
+        downloadButton.classList.add('download-btn');
+
         certificateCard.appendChild(viewButton);
+        certificateCard.appendChild(downloadButton);
         certificateContainer.appendChild(certificateCard);
     });
-});
 
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function () {
+        modal.style.display = 'none';
+        modalContent.src = ''; // Reset the viewer
+    });
+
+    // Close modal when clicking outside the content
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            modalContent.src = ''; 
+        }
+    });
+});
